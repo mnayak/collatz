@@ -1,0 +1,1 @@
+spa_training@localhost.localdomain.6768:1441232806
