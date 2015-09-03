@@ -21,33 +21,49 @@ pair<int, int> collatz_read (const string& s) {
     sin >> i >> j;
     return make_pair(i, j);}
 
+
+
+int next_num(int n){
+
+  if ((n % 2) == 0)
+    return (n / 2);
+  else
+    return (n * 3) + 1;
+
+}
+// ------------
+// collatz_eval
+// ------------
+int recurse_val(int n){
+  if (n == 1)
+    return 1;
+
+  if (cache[n] != 0){
+    return cache[n];
+  }
+
+  int save_maxnum = 1 + recurse_val(next_num(n));
+  cache[n] = save_maxnum;
+  return save_maxnum;
+}
+
+
 // ------------
 // collatz_eval
 // ------------
 
 int collatz_eval (int i, int j) {
   int max_num = 0;
-  for(int num=i; num<=j; num++)
+  for(int n=i; n<=j; n++)
     {
-      int n = num;
       assert(n > 0);
-      int c = 1;
-      while ((n > 1) && (cache[n] == 0)) {
-	if ((n % 2) == 0)
-	  n = (n / 2);
-	else
-	  n = (3 * n) + 1;
-	++c;
-      }
+      int c;
+      c = recurse_val(n);
+
       assert(c > 0);
-      if (cache[n] != 0 && n > 1){
-	c = c + cache[n] - 1;
-      }
       max_num = c > max_num ? c : max_num;
-      cache[num] = c;
 
     }
-  //  cout << " max_num = " << max_num << endl;
   return max_num;
     // <your code>}
 }
@@ -68,6 +84,8 @@ void collatz_solve (istream& r, ostream& w) {
         const pair<int, int> p = collatz_read(s);
         const int            i = p.first;
         const int            j = p.second;
+	for(int n = 1; n <=max(i,j); n++)
+	  cache[n] = 0;
         const int            v = collatz_eval(min(i, j), max(i,j));
         collatz_print(w, i, j, v);}}
 
