@@ -13,6 +13,7 @@ using namespace std;
 // collatz_read
 // ------------
 int cache[1000000];
+int max_val = 1000000;
 
 pair<int, int> collatz_read (const string& s) {
     istringstream sin(s);
@@ -38,12 +39,14 @@ int recurse_val(int n){
   if (n == 1)
     return 1;
 
-  if (cache[n] != 0){
+  if ((n <= max_val) && (cache[n] != 0)){
     return cache[n];
   }
 
   int save_maxnum = 1 + recurse_val(next_num(n));
-  cache[n] = save_maxnum;
+
+  if(n <= max_val)
+    cache[n] = save_maxnum;
   return save_maxnum;
 }
 
