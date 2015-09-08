@@ -12,7 +12,7 @@
 #include "IsPrime1.h"
 
 TEST(Is_Prime_Fixture, test_1) {
-    ASSERT(is_prime( 1));
+    ASSERT_FALSE(is_prime( 1));
 
 }
 
