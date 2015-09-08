@@ -1,59 +1,54 @@
-
 #include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
-#include <map>
-//#include "Collatz.h"
 
+//#include "Collatz.h"
+#define max_val 50000
 using namespace std;
 
 // ------------
 // collatz_read
 // ------------
-//int cache[851290];
-int max_val = 851290;
-map<int, int> cache_map;
+static unsigned short cache[50000];
+//int max_val = 851290;
 
 pair<int, int> collatz_read (const string& s) {
-    istringstream sin(s);
-    int i;
-    int j;
-    sin >> i >> j;
-    return make_pair(i, j);}
+  istringstream sin(s);
+  int i;
+  int j;
+  sin >> i >> j;
+  return make_pair(i, j);}
 
 
+
+int next_num(int n){
+
+  if ((n % 2) == 0)
+    return (n / 2);
+  else
+    return (n * 3) + 1;
+
+}
 // ------------
 // collatz_eval
 // ------------
 int recurse_val(int n){
   if (n == 1)
     return 1;
-  /*
+
   if ((n <= max_val) && (cache[n] != 0)){
     return cache[n];
   }
-  */
 
-  if ((n <= max_val) && (cache_map.find(n) != cache_map.end())){
-    return cache_map[n];
+  if ((n <= max_val) && (n % 2 == 0) && (cache[n/2] != 0)){
+    return cache[n/2]+1;
   }
-
-
-  int num;
-  if ((n % 2) == 0)
-    num =  (n / 2);
-  else
-    num = (3 * n) + 1;
-    
-  int save_maxnum = 1 + recurse_val(num);
+  int save_maxnum = 1 + recurse_val(next_num(n));
 
   if(n <= max_val)
-    {
-      //      cache[n] = save_maxnum;
-      cache_map[n] = save_maxnum;
-    }
+    cache[n] = save_maxnum;
   return save_maxnum;
 }
 
@@ -75,29 +70,31 @@ int collatz_eval (int i, int j) {
 
     }
   return max_num;
-    // <your code>}
+  // <your code>}
 }
 // -------------
 // collatz_print
 // -------------
 
 void collatz_print (ostream& w, int i, int j, int v) {
-    w << i << " " << j << " " << v << endl;}
+  w << i << " " << j << " " << v << endl;}
 
 // -------------
 // collatz_solve
 // -------------
 
 void collatz_solve (istream& r, ostream& w) {
-    string s;
-    while (getline(r, s)) {
-        const pair<int, int> p = collatz_read(s);
-        const int            i = p.first;
-        const int            j = p.second;
-        const int            v = collatz_eval(min(i, j), max(i,j));
-        collatz_print(w, i, j, v);}}
+  string s;
+  while (getline(r, s)) {
+    const pair<int, int> p = collatz_read(s);
+    const int            i = p.first;
+    const int            j = p.second;
+    const int            v = collatz_eval(min(i, j), max(i,j));
+    collatz_print(w, i, j, v);}}
 
 int main () {
-    using namespace std;
-    collatz_solve(cin, cout);
-    return 0;}
+  using namespace std;
+  collatz_solve(cin, cout);
+  return 0;}
+
+
