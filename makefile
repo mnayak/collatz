@@ -112,11 +112,11 @@ push:
 	make clean
 	@echo
 	git add .travis.yml
-	git add examples
+	#git add examples
 	git add collatz
-	git add exercises
+	#git add exercises
 	git add makefile
-	git add quizzes
+	#git add quizzes
 	git commit -m "another commit"
 	git push
 	git status
