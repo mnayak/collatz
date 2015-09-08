@@ -18,6 +18,7 @@ init:
 
 pull:
 	@rsync -r -t -u -v --delete             \
+    --include "Collatz.c++"                   \
     --include "Hello.c++"                   \
     --include "Assertions.c++"              \
     --include "Collatz1.h"                  \
