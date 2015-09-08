@@ -11,13 +11,13 @@
 
 #include "IsPrime1.h"
 
-//TEST(Is_Prime_Fixture, test_1) {
+TEST(Is_Prime_Fixture, test_1) {
     ASSERT(is_prime( 1));
 
-//}
+}
 
 TEST(Is_Prime_Fixture, test_2) {
-    ASSERT_FALSE(is_prime( 2));}
+    ASSERT_TRUE(is_prime( 2));}
 
 TEST(Is_Prime_Fixture, test_3) {
     ASSERT_TRUE(is_prime( 3));}
@@ -32,7 +32,7 @@ TEST(Is_Prime_Fixture, test_7) {
     ASSERT_TRUE(is_prime( 7));}
 
 TEST(Is_Prime_Fixture, test_9) {
-    ASSERT_TRUE(is_prime( 9));}
+    ASSERT_FALSE(is_prime( 9));}
 
 TEST(Is_Prime_Fixture, test_27) {
     ASSERT_FALSE(is_prime(27));}

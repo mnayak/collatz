@@ -10,9 +10,9 @@
 
 bool is_prime (int n) {
     assert(n > 0);
-    if ((n == 1) || ((n % 2) == 0))
+    if ((n == 1) || ((n != 2) && (n % 2) == 0))
         return false;
-    for (int i = 3; i < std::sqrt(n); ++i)
+    for (int i = 3; i <= std::sqrt(n); ++i)
         if ((n % i) == 0)
             return false;
     return true;}
