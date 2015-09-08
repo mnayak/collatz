@@ -34,6 +34,6 @@ status:
 	git remote -v
 	git status
 
-testx:
+test:
 	cd collatz; make TestCollatz
 	@echo
