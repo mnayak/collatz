@@ -4,6 +4,8 @@ clean:
 	cd exercises; make clean
 	@echo
 	cd quizzes; make clean
+	cd collatz; make clean
+	@echo
 
 config:
 	git config -l
@@ -13,34 +15,38 @@ init:
 	git init
 	git add README
 	git commit -m 'first commit'
-	git remote add origin git@github.com:gpdowning/ooplsarc.git
+	git remote add origin git@github.com:mnayak/collatz.git
 	git push -u origin master
 
 pull:
 	@rsync -r -t -u -v --delete             \
     --include "Collatz.c++"                   \
-    --include "Hello.c++"                   \
-    --include "Assertions.c++"              \
-    --include "Collatz1.h"                  \
-    --include "Collatz2.h"                  \
-    --include "UnitTests1.c++"              \
-    --include "UnitTests2.c++"              \
-    --include "UnitTests3.c++"              \
-    --include "Coverage1.c++"               \
-    --include "Coverage2.c++"               \
-    --include "Coverage3.c++"               \
-    --include "Exceptions.c++"              \
-    --include "Exceptions2.c++"             \
-    --include "Exceptions3.c++"             \
-    --exclude "*"                           \
-    ../../../examples/c++/ examples
-	@rsync -r -t -u -v --delete             \
-    --include "IsPrime1.h"                  \
-    --include "IsPrime1.c++"                \
-    --include "IsPrime2.h"                  \
-    --include "IsPrime2.c++"                \
-    --exclude "*"                           \
-    ../../../exercises/c++/ exercises
+#    ../../../examples/c++/ examples
+#	@rsync -r -t -u -v --delete             \
+#    --include "IsPrime1.h"                  \
+#    --include "Hello.c++"                   \
+#    --include "Assertions.c++"              \
+#    --include "Collatz1.h"                  \
+#    --include "Collatz2.h"                  \
+#    --include "UnitTests1.c++"              \
+#    --include "UnitTests2.c++"              \
+#    --include "UnitTests3.c++"              \
+#    --include "Coverage1.c++"               \
+#    --include "Coverage2.c++"               \
+#    --include "Coverage3.c++"               \
+#    --include "Exceptions.c++"              \
+#    --include "Exceptions2.c++"             \
+#    --include "Exceptions3.c++"             \
+#    --exclude "*"                           \
+
+#    ../../../examples/c++/ examples
+#	@rsync -r -t -u -v --delete             \
+#    --include "IsPrime1.h"                  \
+#    --include "IsPrime1.c++"                \
+#    --include "IsPrime2.h"                  \
+#    --include "IsPrime2.c++"                \
+#    --exclude "*"                           \
+#    ../../../exercises/c++/ exercises
 #	@rsync -r -t -u -v --delete             \
 #    --exclude "*"                           \
 #    ../../quizzes/ quizzes
@@ -107,6 +113,7 @@ push:
 	@echo
 	git add .travis.yml
 	git add examples
+	git add collatz
 	git add exercises
 	git add makefile
 	git add quizzes
@@ -122,22 +129,5 @@ status:
 	git status
 
 testx:
-	cd examples; make testx
+	cd collatz; make TestCollatz
 	@echo
-	cd exercises; make testx
-	@echo
-	cd quizzes; make testx
-
-testy:
-	cd examples; make testy
-	@echo
-	cd exercises; make testy
-	@echo
-	cd quizzes; make testy
-
-testz:
-	cd examples; make testz
-	@echo
-	cd exercises; make testz
-	@echo
-	cd quizzes; make testz
