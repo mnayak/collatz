@@ -1,9 +1,9 @@
 clean:
-	cd examples; make clean
-	@echo
-	cd exercises; make clean
-	@echo
-	cd quizzes; make clean
+#	cd examples; make clean
+#	@echo
+#	cd exercises; make clean
+#	@echo
+#	cd quizzes; make clean
 	cd collatz; make clean
 	@echo
 
