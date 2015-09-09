@@ -1,7 +1,7 @@
-CXX        := g++
+CXX        := g++-5.1
 CXXFLAGS   := -pedantic -std=c++11 -Wall
 LDFLAGS    := -lgtest -lgtest_main -pthread
-GCOV       := gcov
+GCOV       := gcov-5.1
 GCOVFLAGS  := -fprofile-arcs -ftest-coverage
 GPROF      := gprof
 GPROFFLAGS := -pg
