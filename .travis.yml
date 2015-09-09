@@ -9,7 +9,7 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
+      - g++-5.1
       - libboost-dev
       - libgtest-dev
       - valgrind
@@ -28,9 +28,9 @@ install:
 before_script:
     - uname -a
     - printenv
-    - g++-4.8 --version
+    - g++-5.1 --version
     - dpkg -l libgtest-dev
-    - gcov-4.8 --version
+    - gcov-5.1 --version
     - grep "#define BOOST_VERSION " /usr/include/boost/version.hpp
     - valgrind --version
     - gprof --version
